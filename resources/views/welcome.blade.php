@@ -181,11 +181,11 @@
     </footer>
 
     <!-- jQuery -->
-    <script src="{{ asset('template/js/jquery-2.1.0.min.js') }}"></script>
+    <script src="{{ secure_asset('template/js/jquery-2.1.0.min.js') }}"></script>
 
     <!-- Bootstrap -->
-    <script src="{{ asset('template/js/popper.js') }}"></script>
-    <script src="{{ asset('template/js/bootstrap.min.js') }}"></script>
+    <script src="{{ secure_asset('template/js/popper.js') }}"></script>
+    <script src="{{ secure_asset('template/js/bootstrap.min.js') }}"></script>
 
     <!-- Plugins -->
     <script src="{{ secure_asset('template/js/owl-carousel.js') }}"></script>
