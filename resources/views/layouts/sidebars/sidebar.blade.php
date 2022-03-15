@@ -14,7 +14,7 @@
                 <img src="admlte/img/user2-160x160.jpg" class="img-circle" alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block" style="color: white">Admin</a>
+                <a href="#" class="d-block" style="color: white">{{ Auth::user()->level }}</a>
             </div>
         </div>
 
