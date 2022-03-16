@@ -73,7 +73,7 @@
                 <div class="col-lg-4">
                     <div class="left-content">
                         <div class="inner-content">
-                            <h4>Garden Cafe&Resto</h4>
+                            <h4 style="font-size: 20">Garden Cafe&Resto</h4>
                             <h6>THE BEST EXPERIENCE</h6>
                             <div class="main-white-button scroll-to-section">
                                 <a href="#">Selamat datang!!!</a>
