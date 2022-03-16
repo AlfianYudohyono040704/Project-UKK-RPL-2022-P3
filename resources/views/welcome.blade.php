@@ -76,7 +76,7 @@
                             <h4>Garden Cafe&Resto</h4>
                             <h6>THE BEST EXPERIENCE</h6>
                             <div class="main-white-button scroll-to-section">
-                                <a href="#">Ngopi Atuh Cooy</a>
+                                <a href="#">Selamat datang!!!</a>
                             </div>
                         </div>
                     </div>
