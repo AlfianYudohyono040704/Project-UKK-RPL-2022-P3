@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+class Customer extends Migration
 {
     /**
      * Run the migrations.
@@ -15,13 +15,16 @@ return new class extends Migration
     {
         Schema::create('customers', function (Blueprint $table) {
             $table->id();
-            $table->string('firstname')->nullable();
-            $table->string('lastname')->nullable();
+            $table->string('first_name', 20);
+            $table->string('last_name', 20);
             $table->string('email')->nullable();
             $table->string('phone')->nullable();
             $table->string('address')->nullable();
-            $table->string('user_id')->constrained('users');
+            $table->string('avatar')->nullable();
+            $table->foreignId('user_id');
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
@@ -34,4 +37,4 @@ return new class extends Migration
     {
         Schema::dropIfExists('customers');
     }
-};
+}
