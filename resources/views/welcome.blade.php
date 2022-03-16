@@ -13,15 +13,15 @@
     <title>Garden Cafe - Restaurant</title>
 
     <!-- Additional CSS Files -->
-    <link rel="stylesheet" type="text/css" href="{{ secure_asset('template/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('template/css/bootstrap.min.css') }}">
 
-    <link rel="stylesheet" type="text/css" href="{{ secure_asset('template/css/font-awesome.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('template/css/font-awesome.css') }}">
 
-    <link rel="stylesheet" href="{{ secure_asset('template/css/templatemo-klassy-cafe.css') }}">
+    <link rel="stylesheet" href="{{ asset('template/css/templatemo-klassy-cafe.css') }}">
 
-    <link rel="stylesheet" href="{{ secure_asset('template/css/owl-carousel.css') }}">
+    <link rel="stylesheet" href="{{ asset('template/css/owl-carousel.css') }}">
 
-    <link rel="stylesheet" href="{{ secure_asset('template/css/lightbox.css') }}">
+    <link rel="stylesheet" href="{{ asset('template/css/lightbox.css') }}">
 
     </head>
     
@@ -73,10 +73,10 @@
                 <div class="col-lg-4">
                     <div class="left-content">
                         <div class="inner-content">
-                            <h4 style="font-size: 20">Garden Cafe&Resto</h4>
-                            <h6 style="font-size: 10">THE BEST EXPERIENCE</h6>
+                            <h4>GardenCafe</h4>
+                            <h6>THE BEST EXPERIENCE</h6>
                             <div class="main-white-button scroll-to-section">
-                                <a href="#">Selamat datang!!!</a>
+                                <a href="#about">Selamat datang !!!</a>
                             </div>
                         </div>
                     </div>
@@ -121,9 +121,10 @@
                     <div class="left-text-content">
                         <div class="section-heading">
                             <h6>About Us</h6>
-                            <h2>We Leave A Delicious Memory For You</h2>
+                            <h2>Selamat Di Website Garden Cafe</h2>
                         </div>
-                        <p>Klassy Cafe is one of the best <a href="https://templatemo.com/tag/restaurant" target="_blank" rel="sponsored">restaurant HTML templates</a> with Bootstrap v4.5.2 CSS framework. You can download and feel free to use this website template layout for your restaurant business. You are allowed to use this template for commercial purposes. <br><br>You are NOT allowed to redistribute the template ZIP file on any template donwnload website. Please contact us for more information.</p>
+                        <p>Garden cafe is one of the best,<br>Sesuai namanya, cafe ini memberi kesejukan taman ditengah hiruk pikuk Kota Bogor. Zaman sekarang kalau buka cafe bukan hanya soal taste aja, desain interior juga harus ciamik, instagramable, fotogenik dan bisa buat mejeng cantik.
+                        </p>
                         <div class="row">
                             <div class="col-4">
                                 <img src="template/images/about-thumb-01.jpg" alt="">
@@ -137,7 +138,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-6 col-xs-12">
+                <div class="col-lg-5 col-md-5 col-xs-12">
                     <div class="right-content">
                         <div class="thumb">
                             <a rel="nofollow" href="http://youtube.com"><i class="fa fa-play"></i></a>
@@ -180,26 +181,26 @@
     </footer>
 
     <!-- jQuery -->
-    <script src="{{ secure_asset('template/js/jquery-2.1.0.min.js') }}"></script>
+    <script src="{{ asset('template/js/jquery-2.1.0.min.js') }}"></script>
 
     <!-- Bootstrap -->
-    <script src="{{ secure_asset('template/js/popper.js') }}"></script>
-    <script src="{{ secure_asset('template/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('template/js/popper.js') }}"></script>
+    <script src="{{ asset('template/js/bootstrap.min.js') }}"></script>
 
     <!-- Plugins -->
-    <script src="{{ secure_asset('template/js/owl-carousel.js') }}"></script>
-    <script src="{{ secure_asset('template/js/accordions.js') }}"></script>
-    <script src="{{ secure_asset('template/js/datepicker.js') }}"></script>
-    <script src="{{ secure_asset('template/js/scrollreveal.min.js') }}"></script>
-    <script src="{{ secure_asset('template/js/waypoints.min.js"') }}"></script>
-    <script src="{{ secure_asset('template/js/jquery.counterup.min.js') }}"></script>
-    <script src="{{ secure_asset('template/js/imgfix.min.js') }}"></script> 
-    <script src="{{ secure_asset('template/js/slick.js') }}"></script> 
-    <script src="{{ secure_asset('template/js/lightbox.js') }}"></script> 
-    <script src="{{ secure_asset('template/js/isotope.js') }}"></script> 
+    <script src="{{ asset('template/js/owl-carousel.js') }}"></script>
+    <script src="{{ asset('template/js/accordions.js') }}"></script>
+    <script src="{{ asset('template/js/datepicker.js') }}"></script>
+    <script src="{{ asset('template/js/scrollreveal.min.js') }}"></script>
+    <script src="{{ asset('template/js/waypoints.min.js"') }}"></script>
+    <script src="{{ asset('template/js/jquery.counterup.min.js') }}"></script>
+    <script src="{{ asset('template/js/imgfix.min.js') }}"></script> 
+    <script src="{{ asset('template/js/slick.js') }}"></script> 
+    <script src="{{ asset('template/js/lightbox.js') }}"></script> 
+    <script src="{{ asset('template/js/isotope.js') }}"></script> 
     
     <!-- Global Init -->
-    <script src="{{ secure_asset('template/js/custom.js') }}"></script>
+    <script src="{{ asset('template/js/custom.js') }}"></script>
     <script>
 
         $(function() {
