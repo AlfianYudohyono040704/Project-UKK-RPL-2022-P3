@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use App\Models\UserCart;
+use Auth;
 use Illuminate\Http\Request;
 
 class UserCartController extends Controller
@@ -15,6 +17,10 @@ class UserCartController extends Controller
     public function index()
     {
         //
+        $cart = UserCart::all();
+        $products = Product::all();
+        $subTotal = UserCart::all()->sum('quantity') * Product::all()->sum('price');
+        return view('cart.index', compact('products', 'cart', 'subTotal'));
     }
 
     /**
@@ -36,7 +42,37 @@ class UserCartController extends Controller
     public function store(Request $request)
     {
         //
+        $this->validate($request, [
+            'product_id' => 'required',
+            'quantity' => 'required',
+
+        ]);
+
+        $product_cek = UserCart::where('product_id', $request->product_id)->first();
+        if ($product_cek == null) {
+            $cart = new UserCart;
+            $cart->product_id = $request->product_id;
+            $cart->quantity = $request->quantity;
+        } else {
+            $cart = UserCart::where('product_id', $request->product_id)->first();
+            $cart->product_id = $request->product_id;
+            $cart->quantity += $request->quantity;
+        }
+        $cart->user_id = Auth::user()->id;
+        //update stock pada table product
+        $product_stock = Product::where('id', $request->product_id)->first();
+        $product_stock->quantity -= $request->quantity;
+        $product_stock->save();
+
+
+        if (!$cart->save()) {
+            return redirect()->back()->with('error', 'Gagal menambahkan ke keranjang');
+        } else {
+            return redirect()->back()->with('success', 'Berhasil menambahkan ke keranjang !');
+        }
+        // return redirect()->back()->with('success', 'Product added to cart successfully!');
     }
+
 
     /**
      * Display the specified resource.
@@ -78,8 +114,14 @@ class UserCartController extends Controller
      * @param  \App\Models\UserCart  $userCart
      * @return \Illuminate\Http\Response
      */
-    public function destroy(UserCart $userCart)
+    public function destroy($id)
     {
-        //
+        $cart = UserCart::findOrFail($id);
+        //update stock jika dihapus dari keranjang
+        $product_stock = Product::where('id', $cart->product_id)->first();
+        $product_stock->quantity += $cart->quantity;
+        $product_stock->save();
+        $cart->delete();
+        return redirect()->back()->with('success', 'Berhasil menghapus produk dari keranjang !');
     }
 }

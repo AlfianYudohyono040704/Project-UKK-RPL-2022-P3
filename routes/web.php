@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BarcodeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,19 +24,25 @@ Auth::routes();
 
 //untuk login admin
 Route::group(['middleware' => ['auth', 'level']], function () {
-    Route::resource('product', \App\Http\Controllers\ProductController::class)->middleware('auth','level');
+    Route::resource('product', \App\Http\Controllers\ProductController::class)->middleware('auth', 'level');
     Route::get('product/destroy/{id}', [\App\Http\Controllers\ProductController::class, 'destroy'])->name('product.destroy')->middleware('auth','level');
+
+    //cart
+    Route::resource('cart', \App\Http\Controllers\UserCartController::class)->middleware('auth', 'level');
 });
 
-Route::group(['middleware'=>['auth','manager']], function(){
+Route::group(['middleware' => ['auth', 'manager']], function () {
     //ini untuk manager
 });
 
-Route::group(['middleware'=>['auth','kasir']], function(){
+Route::group(['middleware' => ['auth', 'kasir']], function () {
     //ini untuk kasir
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+//route barcode
+Route::get('/barcode', [BarcodeController::class, 'index'])->name('barcode.index');
 
 //membuat route test
 Route::get('/test', function () {

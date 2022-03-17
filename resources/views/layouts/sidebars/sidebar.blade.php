@@ -1,11 +1,11 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-2" style="background-color:  #fb5849; font-family: 'Dancing Script', cursive;">    
     <!-- Brand Logo -->
     <a href="#" class="brand-link">
-        <img src="admlte/img/Logocafe.png" alt="Logocafe" class="brand-image img-circle"
-            style="opacity: .8">
+        <img src="admlte/img/Logocafe1.png" alt="Logocafe" class="brand-image img-circle" style="opacity: 4">
         <span class="brand-text font-weight-light" style="color: white"><b>Garden <i>Cafe</i></b></span>
     </a>
 
+    
     <!-- Sidebar -->
     <div class="sidebar">
         <!-- Sidebar user panel (optional) -->
@@ -50,7 +50,7 @@
                     </a>
                 </li>
                 <li class="nav-item has-treeview">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('cart.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-th-large"></i>
                         <p style="color: white">Cart</p>
                     </a>

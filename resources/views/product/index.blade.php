@@ -8,7 +8,7 @@
     <section class="content-header">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-sm-6">
+                <div class="col-sm-6" style="font-family:'Dancing Script', cursive;">
                     <h1>Product List</h1>
                 </div>
                 <div class="col-sm-6">
@@ -51,14 +51,22 @@
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $pr->name }}</td>
-                                            <td><img src="{{ Storage::url($pr->image) }}" width="100"></td>
+                                            <td><img src="{{ Storage::url($pr->image) }}" width="150"></td>
                                             <td>{{ $pr->description }}</td>
-                                            <td>{{ $pr->barcode }}</td>
-                                            <td>{{ $pr->price }}</td>
+                                            <td>
+                                                @php
+                                                    echo DNS1D::getBarcodeSVG($pr->barcode, 'C128');
+                                                @endphp
+                                            </td>
+                                            <td>{{ number_format($pr->price, 2) }}</td>
                                             <td>{{ $pr->quantity }}</td>
-                                            <td>{{ $pr->status }}</td>
-                                            <td><a href="{{ route('product.edit', $pr->id) }}" class="btn btn-outline-warning"><i class="fas fa-edit"></i></a><br><br>
-                                                <a href="{{ route('product.destroy', $pr->id) }}" class="btn btn-outline-danger"><i class="fas fa-trash"></i></a>
+                                            @if ($pr->status == 1)
+                                                <td><a href="#" class="btn btn-success">Active</a></td>
+                                            @else
+                                                <td><a href="#" class="btn btn-danger">Inactive</a></td>
+                                            @endif
+                                            <td><a href="{{ route('product.edit', $pr->id) }}" class="btn btn-warning"><i class="fas fa-edit"></i></a><br><br>
+                                                <a href="{{ route('product.destroy', $pr->id) }}" class="btn btn-danger"><i class="fas fa-trash"></i></a>
                                             </td>
                                         </tr>
                                     @empty

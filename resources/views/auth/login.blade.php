@@ -1,7 +1,7 @@
 @extends('layouts.auth')
 
 @section('content')
-    <div class="card-body login-card-body">
+    <div class="card-body login-card-body"> 
         <p class="login-box-msg">Sign in to start your session</p>
 
         <form action="{{ route('login') }}" method="post">
@@ -38,6 +38,9 @@
                 <!-- /.col -->
             </div>
         </form>
+
+
+        <!-- /.social-auth-links -->
 
         <p class="mb-1">
             <a href="forgot-password.html">I forgot my password</a>

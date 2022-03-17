@@ -1,5 +1,17 @@
 @extends('layouts.master')
 
+@section('content-header')
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-6" style="font-family:'Dancing Script', cursive;">
+                    <h1>Dashboard</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+@endsection
+
 @section('content')
 <section class="content">
     <div class="container-fluid">
@@ -68,13 +80,22 @@
             <!-- ./col -->
         </div>
     </div>
-    <div class="row">
-        <div class="col-12">
-            <div class="col-12 mb-4">
-                <div class="hero hero-bg-image hero-bg-parallax" style="font-family: 'Times New Roman', Times, serif; font-color: Black">
-                    <div class="hero-inner">
-                        <h2>Selamat Datang, {{ Auth::user()->name }} !</h2>
-                        <p class="lead">hak akses {{ Auth::user()->level }} telah diberikan kepada akun Anda! </p>
+    
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card" style="background-color: #fb5849">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="col-12 mb-4">
+                                <div class="hero hero-bg-image hero-bg-parallax" style="font-family:'Dancing Script', cursive">
+                                    <div class="hero-inner" style="color: white"><br>
+                                        <h2>Selamat datang, {{ Auth::user()->name }} !</h2>
+                                        <p class="lead"><b>Hak akses {{ Auth::user()->level }} telah diberikan kepada akun Anda !</b></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
