@@ -17,9 +17,9 @@ class level
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Auth::check() && Auth::user()->level == 'admin') {
-            return $next($request);
+        if (\Auth::user()->level != 'admin'){
+            return abort(404);
         }
-        return redirect('/');
+        return $next($request);
     }
 }

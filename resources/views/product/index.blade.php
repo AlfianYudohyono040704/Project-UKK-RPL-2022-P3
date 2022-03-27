@@ -9,14 +9,14 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-6" style="font-family:'Dancing Script', cursive;">
-                    <h1>Product List</h1>
+                    <h1>Menu List</h1>
                 </div>
-                <div class="col-sm-6">
+                <!--<div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
                         <li class="breadcrumb-item"><a href="#">Product</a></li>
                     </ol>
-                </div>
+                </div>-->
             </div>
         </div>
     </section>
@@ -28,8 +28,8 @@
             <div class="row">
                 <div class="col-12">
                     <div class="card">
-                        <div class="card-header">
-                            <a href="{{ route('product.create') }}" class="btn btn-primary card-title">Create Product</a>
+                        <div class="card-header" style="background-color: chocolate">
+                            <a href="{{ route('product.create') }}" class="btn btn-primary card-title">Create Menu</a>
                         </div>
                         <div class="card-body">
                             <table class="table table-bordered">
@@ -61,9 +61,9 @@
                                             <td>{{ number_format($pr->price, 2) }}</td>
                                             <td>{{ $pr->quantity }}</td>
                                             @if ($pr->status == 1)
-                                                <td><a href="#" class="btn btn-success">Active</a></td>
+                                                <td><a href="#" class="btn btn-success">Tersedia</a></td>
                                             @else
-                                                <td><a href="#" class="btn btn-danger">Inactive</a></td>
+                                                <td><a href="#" class="btn btn-danger">Tidak tersedia</a></td>
                                             @endif
                                             <td><a href="{{ route('product.edit', $pr->id) }}" class="btn btn-warning"><i class="fas fa-edit"></i></a><br><br>
                                                 <a href="{{ route('product.destroy', $pr->id) }}" class="btn btn-danger"><i class="fas fa-trash"></i></a>

@@ -11,10 +11,18 @@
     <title>Login Page</title>
 </head>
 
-<body class="hold-transition login-page" style="background-color: #fb5849">
+<body class="hold-transition login-page" style="background-image: url('/admlte/img/login.jpg'); background-size: cover;">
+    @if (session('error'))
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{ session('error') }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    @endif
     <div class="login-box">
         <div class="login-logo">
-            <h1 style="font-family: 'Dancing Script', cursive">Login Page</h1>
+            <h1 style="font-family: 'Dancing Script', cursive"><b>Login Page</b></h1>
         </div>
         <div class="card">
 

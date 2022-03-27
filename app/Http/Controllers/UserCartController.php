@@ -19,8 +19,9 @@ class UserCartController extends Controller
         //
         $cart = UserCart::all();
         $products = Product::all();
-        $subTotal = UserCart::all()->sum('quantity') * Product::all()->sum('price');
-        return view('cart.index', compact('products', 'cart', 'subTotal'));
+        $jml_trx = $cart->count();
+        $total_belanja = UserCart::sum('subTotal');
+        return view('cart.index', compact('products', 'cart', 'total_belanja', 'jml_trx'));
     }
 
     /**
@@ -49,16 +50,19 @@ class UserCartController extends Controller
         ]);
 
         $product_cek = UserCart::where('product_id', $request->product_id)->first();
-        if ($product_cek == null) {
-            $cart = new UserCart;
-            $cart->product_id = $request->product_id;
-            $cart->quantity = $request->quantity;
+        $product = Product::where('id', $request->product_id)->first();
+        if ($request->input('quantity') > $product->quantity) {
+            // $cart = UserCart::where('product_id', $request->product_id)->first();
+            //apa bila stok di product tidak cukup
+            return redirect()->back()->with('gagal', 'Stock Menu anda tidak tersedia, silakan cek kembali !');
         } else {
-            $cart = UserCart::where('product_id', $request->product_id)->first();
+            $cart = new UserCart;
+            // $cart = \App\Models\UserCart::where('product_id', $request->input('product_id'))->first();
             $cart->product_id = $request->product_id;
-            $cart->quantity += $request->quantity;
+            $cart->quantity += $request->input('quantity');
         }
         $cart->user_id = Auth::user()->id;
+        $cart->subTotal = $cart->quantity * $product->price;
         //update stock pada table product
         $product_stock = Product::where('id', $request->product_id)->first();
         $product_stock->quantity -= $request->quantity;
@@ -68,8 +72,9 @@ class UserCartController extends Controller
         if (!$cart->save()) {
             return redirect()->back()->with('error', 'Gagal menambahkan ke keranjang');
         } else {
-            return redirect()->back()->with('success', 'Berhasil menambahkan ke keranjang !');
+            return redirect()->back()->with('success', 'Berhasil menambahkan menu kedalam keranjang !');
         }
+
         // return redirect()->back()->with('success', 'Product added to cart successfully!');
     }
 
@@ -83,6 +88,7 @@ class UserCartController extends Controller
     public function show(UserCart $userCart)
     {
         //
+        abort(404);
     }
 
     /**
@@ -122,6 +128,6 @@ class UserCartController extends Controller
         $product_stock->quantity += $cart->quantity;
         $product_stock->save();
         $cart->delete();
-        return redirect()->back()->with('success', 'Berhasil menghapus produk dari keranjang !');
+        return redirect()->back()->with('success', 'Berhasil menghapus Menu dari keranjang !');
     }
 }

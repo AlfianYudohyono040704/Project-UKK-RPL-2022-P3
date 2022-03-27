@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    <title>Pos Ujikom</title>
+    <title>Cart Page</title>
 @endsection
 
 @section('content-header')
@@ -9,14 +9,14 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-6" style="font-family:'Dancing Script', cursive;">
-                    <h1>Cart</h1>
+                    <h1>Keranjang</h1>
                 </div>
-                <div class="col-sm-6">
+                <!--<div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item"><a href="#">Product</a></li>
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
                     </ol>
-                </div>
+                </div>-->
             </div>
         </div>
     </section>
@@ -25,43 +25,44 @@
 @section('content')
     <section class="content">
         <div class="container-fluid">
+            @if ($msg = Session::get('gagal'))
+                <div class="alert alert-danger">
+                    <p>{{ $msg }}</p>
+                </div>
+            @endif
             @if ($errors->any())
                 <div class="alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
+                    @foreach ($errors->all() as $error)
+                        <p>{{ $error }}</p>
+                    @endforeach
                 </div>
             @endif
             @if (Session::has('success'))
-                <div class="alert" style="background-color: #fb5849; color: white">
-                    <ul>
-                        <li>{{ Session::get('success') }}</li>
-                    </ul>
+                <div class="alert alert-success" style="background-color: green; color: white">
+                    <p>{{ Session::get('success') }}</p>
                 </div>
             @endif
             <div class="row">
 
                 <div class="col-4">
                     <div class="card">
-                        <div class="card-header">
-                            <h3 class="card-title">Profil Kasir</h3>
+                        <div class="card-header" style="background-color: chocolate">
+                            <h3 class="card-title"><b>Profil Kasir</b></h3>
                         </div>
                         <div class="card-body d-flex justify-content-between">
 
                             <div class="d-flex flex-column">
-                                <p>Nama Kasir : {{ Auth::user()->name }}</b> </p>
-                                <p class="ref"></p>
-                                <p class="tgl">Tanggal : {{ date('Y-m-d') }}</p>
+                                <p>Nama Kasir : <b>{{ Auth::user()->name }}</b></b> </p>
+                                
+                                <p class="tgl">Tanggal : <b>{{ date('Y-m-d') }}</b></p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-4">
                     <div class="card">
-                        <div class="card-header">
-                            <h3 class="card-title">Pilih Barang</h3>
+                        <div class="card-header" style="background-color: chocolate">
+                            <h3 class="card-title"><b>Pilih Barang</b></h3>
                         </div>
                         <div class="card-body">
                             <form action="{{ route('cart.store') }}" method="post">
@@ -89,11 +90,11 @@
                     <div class="card">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title">Total Belanja</h3>
+                                <h3 class="card-title"><b>Total Belanja</b></h3>
                             </div>
-                            <div class="card-body bg-warning d-flex align-items-center justify-content-center">
+                            <div class="card-body d-flex align-items-center justify-content-center" style="background-color: chocolate">
                                 <h1 class="text-white text-bold totalnya">Rp.
-                                    {{ $subTotal }}</h1>
+                                    {{ number_format($total_belanja, 2, ',', '.') }}</h1>
                             </div>
                         </div>
                     </div>
@@ -102,8 +103,8 @@
             <div class="row">
                 <div class="col-12">
                     <div class="card">
-                        <div class="card-header bg-secondary">
-                            <h3 class="card-title">Keranjang Barang</h3>
+                        <div class="card-header" style="background-color: chocolate">
+                            <h3 class="card-title"><b>Keranjang Barang</b></h3>
                         </div>
                         <div class="card-body">
                             <table class="table table-bordered table-hovered">
@@ -123,14 +124,10 @@
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $ct->product->name }}</td>
-                                            <td>
-                                                @php
-                                                    echo DNS1D::getBarcodeSVG($ct->product->barcode, 'C128');
-                                                @endphp
-                                            </td>
+                                            <td>{{ $ct->product->barcode }}</td>
                                             <td>{{ $ct->quantity }}</td>
                                             <td>{{ $ct->product->price }}</td>
-                                            <td>{{ $ct->product->price * $ct->quantity }}</td>
+                                            <td>{{ $ct->subTotal }}</td>
                                             <td>
                                                 <form action="{{ route('cart.destroy', $ct->id) }}" method="post">
                                                     @csrf
@@ -146,7 +143,7 @@
                             </table>
                         </div>
                         <div class="card-footer d-flex justify-content-end">
-                            <a href="#" class="btn btn-sm btn-primary">CheckOut</a>
+                            <a href="{{ route('order.index') }}" class="btn btn-sm btn-primary">CheckOut</a>
                         </div>
                     </div>
                 </div>
