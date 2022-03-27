@@ -13,15 +13,15 @@
     <title>Garden Cafe</title>
 
     <!-- Additional CSS Files -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('template/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ secure_asset('template/css/bootstrap.min.css') }}">
 
-    <link rel="stylesheet" type="text/css" href="{{ asset('template/css/font-awesome.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ secure_asset('template/css/font-awesome.css') }}">
 
-    <link rel="stylesheet" href="{{ asset('template/css/templatemo-klassy-cafe.css') }}">
+    <link rel="stylesheet" href="{{ secure_asset('template/css/templatemo-klassy-cafe.css') }}">
 
-    <link rel="stylesheet" href="{{ asset('template/css/owl-carousel.css') }}">
+    <link rel="stylesheet" href="{{ secure_asset('template/css/owl-carousel.css') }}">
 
-    <link rel="stylesheet" href="{{ asset('template/css/lightbox.css') }}">
+    <link rel="stylesheet" href="{{ secure_asset('template/css/lightbox.css') }}">
 
     </head>
     
@@ -180,23 +180,23 @@
     <script src="{{ asset('template/js/jquery-2.1.0.min.js') }}"></script>
 
     <!-- Bootstrap -->
-    <script src="{{ asset('template/js/popper.js') }}"></script>
-    <script src="{{ asset('template/js/bootstrap.min.js') }}"></script>
+    <script src="{{ secure_asset('template/js/popper.js') }}"></script>
+    <script src="{{ secure_asset('template/js/bootstrap.min.js') }}"></script>
 
     <!-- Plugins -->
-    <script src="{{ asset('template/js/owl-carousel.js') }}"></script>
-    <script src="{{ asset('template/js/accordions.js') }}"></script>
-    <script src="{{ asset('template/js/datepicker.js') }}"></script>
-    <script src="{{ asset('template/js/scrollreveal.min.js') }}"></script>
-    <script src="{{ asset('template/js/waypoints.min.js"') }}"></script>
-    <script src="{{ asset('template/js/jquery.counterup.min.js') }}"></script>
-    <script src="{{ asset('template/js/imgfix.min.js') }}"></script> 
-    <script src="{{ asset('template/js/slick.js') }}"></script> 
-    <script src="{{ asset('template/js/lightbox.js') }}"></script> 
-    <script src="{{ asset('template/js/isotope.js') }}"></script> 
+    <script src="{{ secure_asset('template/js/owl-carousel.js') }}"></script>
+    <script src="{{ secure_asset('template/js/accordions.js') }}"></script>
+    <script src="{{ secure_asset('template/js/datepicker.js') }}"></script>
+    <script src="{{ secure_asset('template/js/scrollreveal.min.js') }}"></script>
+    <script src="{{ secure_asset('template/js/waypoints.min.js"') }}"></script>
+    <script src="{{ secure_asset('template/js/jquery.counterup.min.js') }}"></script>
+    <script src="{{ secure_asset('template/js/imgfix.min.js') }}"></script> 
+    <script src="{{ secure_asset('template/js/slick.js') }}"></script> 
+    <script src="{{ secure_asset('template/js/lightbox.js') }}"></script> 
+    <script src="{{ secure_asset('template/js/isotope.js') }}"></script> 
     
     <!-- Global Init -->
-    <script src="{{ asset('template/js/custom.js') }}"></script>
+    <script src="{{ secure_asset('template/js/custom.js') }}"></script>
     <script>
 
         $(function() {
