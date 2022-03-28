@@ -27,7 +27,7 @@
                     <table class="table table-bordered">
                         <thead>
                             <tr>
-                                <th>#</th>
+                                <th>No</th>
                                 <th>Nama Pegawai</th>
                                 <th>Activity</th>
                                 <th>Times</th>

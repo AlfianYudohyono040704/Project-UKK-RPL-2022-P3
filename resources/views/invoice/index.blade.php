@@ -46,7 +46,7 @@
                 <div class="row invoice-info">
                     <!-- /.col -->
                     <div class="col-sm-4 invoice-col">
-                        <b>Invoice #{{ $userid }}</b><br>
+                        <b>Invoice {{ $userid }}</b><br>
                         <br>
                         <b>Nama Kasir : {{ Auth::user()->name }}</b><br>
                         <b>Order ID :</b> {{ $trxheader[0]->userid }}<br>
@@ -74,11 +74,7 @@
                                     <tr>
                                         <td>{{ $t->qty }}</td>
                                         <td>{{ $t->produk->name }}</td>
-                                        <td>
-                                            @php
-                                                echo DNS1D::getBarcodeSVG($t->produk->barcode, 'C128');
-                                            @endphp
-                                        </td>
+                                        <td>{{ $t->produk->barcode }}</td>
                                         <td>Rp. {{ number_format($t->harga, 2, '.', ',') }}</td>
                                         <td>Rp. {{ number_format($t->subTotal, 2, '.', ',') }}</td>
                                     </tr>

@@ -22,6 +22,7 @@ class ProductController extends Controller
 
         $title = 'Product';
         $product = Product::all();
+        $productid = Product::count();
         return view('product.index', compact('title', 'product'));
     }
 

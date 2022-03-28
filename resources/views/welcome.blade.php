@@ -53,7 +53,7 @@
                             <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
                             <li class="scroll-to-section"><a href="#about">Tentang</a></li>                          
                             <li class="scroll-to-section"><a href="{{ route('login') }}">Login</a></li>
-                            <li class="scroll-to-section"><a href="{{ route('register') }}">regis</a></li>
+                            {{-- <li class="scroll-to-section"><a href="{{ route('register') }}">regis</a></li> --}}
                         </ul>        
                     </nav>
                 </div>

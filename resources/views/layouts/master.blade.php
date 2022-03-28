@@ -33,7 +33,7 @@
 
         <!-- Preloader -->
         <div class="preloader flex-column justify-content-center align-items-center" style="background-color: chocolate">
-            <img class="animation__shake img-circle" src="{{ secure_asset('admlte') }}/img/logoawal.png" alt="AdminLTELogo"
+            <img class="animation__shake img-circle" src="{{ asset('admlte') }}/img/logoawal.png" alt="AdminLTELogo"
                 height="60" width="60">
         </div>
 

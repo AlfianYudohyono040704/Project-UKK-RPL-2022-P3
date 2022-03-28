@@ -41,7 +41,7 @@
                 <div class="small-box bg-success">
                     <div class="inner">
                         <h3>#</h3>
-                        <p>Income</p>
+                        <p><b>Product</b></p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-stats-bars"></i>
@@ -64,21 +64,20 @@
                     </div>
                     <a href="#" class="small-box-footer">More info <i
                             class="fas fa-arrow-circle-right"></i></a>
-                </div>
+                </div> 
             </div>
             <!-- ./col -->
             <div class="col-lg-3 col-6">
                 <!-- small box -->
                 <div class="small-box bg-warning">
                     <div class="inner">
-                        <h3>0</h3>
-
-                        <p>Customers Count</p>
+                         <h3>{{ $user }}</h3> 
+                         <p><b>User</b></p>                    
                     </div>
                     <div class="icon">
                         <i class="ion ion-person-add"></i>
                     </div>
-                    <a href="#" class="small-box-footer">More info <i
+                    <a href="{{route('User.index')}}" class="small-box-footer">More info <i
                             class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
@@ -109,6 +108,39 @@
     @elseif (Auth::user()->level == 'manager')
     <div class="container-fluid">
         <div class="row">
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-info">
+                    <div class="inner">
+                        <h3>#</h3>
+                        <p>Orders Count</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-bag"></i>
+                    </div>
+                    <a href="#" class="small-box-footer">More info <i
+                            class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-success">
+                    <div class="inner">
+                        <h3>#</h3>
+                        <p><b>Product</b></p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-stats-bars"></i>
+                    </div>
+                    <a href="{{ route('product.index') }}" class="small-box-footer">More info <i
+                            class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
             <div class="col-12">
                 <div class="card" style="background-color: chocolate;">
                     <div class="row">
@@ -127,42 +159,7 @@
             </div>
         </div>
     </div>
-    <!--<div class="container-fluid">
-        <div class="card">
-            <div class="card-header" style="background-color: chocolate">
-                <h3 class="card-title"><b>Activity Users</b></h3>
-            </div>
-            <div class="card-body">
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Nama Pegawai</th>
-                            <th>Activity</th>
-                            <th>Times</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($activity_log as $item)
-                        <tr>
-                            <td>{{ $loop->iteration }}</td>
-                            <td class="font-w600 text-left" style="width: 100px">
-                                <span class="badge">{{ $item->user->name }}</span>
-                            </td>
-                            <td class="d-none d-sm-table-cell">
-                                <span class="badge badge-success">{{ $item->description }}</span>
-                            </td>
-                            <td>
-                                <span class="badge badge-danger">{{ Carbon\Carbon::parse($item->created_at)->diffForHumans() }}</span>
-                            </td>
-                        </tr>
-                    @endforeach
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>-->
-
+    
     @else
     <div class="container-fluid">
         <div class="row">

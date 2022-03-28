@@ -24,6 +24,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('product', \App\Http\Controllers\ProductController::class);
     Route::get('product/destroy/{id}', [\App\Http\Controllers\ProductController::class, 'destroy'])->name('product.destroy');
     Route::resource('activity', \App\Http\Controllers\ActivityLogController::class);
+    Route::resource('User', \App\Http\Controllers\UserController::class);
 
     //cart
     //Route::resource('cart', \App\Http\Controllers\UserCartController::class);

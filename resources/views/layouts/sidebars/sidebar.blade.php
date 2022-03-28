@@ -52,7 +52,7 @@
                     </a>
                 </li>
                 <li class="nav-item has-treeview">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('User.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-user-plus"></i>
                         <p style="color: white">Add User</p>
                     </a>
