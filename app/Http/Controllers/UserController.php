@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\ActivityLog;
-use Illuminate\Foundation\Auth\RegistersUsers;
 use App\Providers\RouteServiceProvider;
+use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -22,25 +24,6 @@ class UserController extends Controller
         $user = User::all();
         $userid = User::count();
         return view('User.index', compact('user'));
-    }
-
-    use RegistersUsers;
-
-    /**
-     * Where to redirect users after registration.
-     *
-     * @var string
-     */
-    protected $redirectTo = RouteServiceProvider::HOME;
-
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware;
     }
 
     /**
@@ -61,31 +44,25 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $data)
     {
         //
-        $this->validate($request, [
-            'name' => 'required|string|max:255',
-            'level' => 'required|string|max:255',
-            'email' => 'required|string|max:255',
-            'password' => 'required|string|max:255',
+        $this->validate($data, [
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'confirmed'],
         ]);
 
-        $user = User::create([
-            'name' => $request->input('name'),
-            'level' => $request->input('level'),
-            'email' => $request->input('email'),
-            'password' => Hash::make('password'),
-            
+        $save = User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'level' => $data['level'],
+            'password' => Hash::make($data['password']),
         ]);
 
-        activity()->log('Menambahkan user');
+        activity()->log('Sukses Menambahkan User');
 
-        if (!$user) {
-            return redirect()->back()->with(['error' => 'error page create']);
-        } else {
-            return redirect()->route('User.index')->with(['error' => '<strong>' . $user->name . '</strong> Tidak Ditambahkan']);
-        }
+        return redirect()->route('User.index')->with(['error' => '<strong> Data </strong> Berhasil Ditambahkan']);
     }
 
     /**

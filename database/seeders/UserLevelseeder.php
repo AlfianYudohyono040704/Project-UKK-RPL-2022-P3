@@ -18,21 +18,21 @@ class UserLevelSeeder extends Seeder
         //users
         $users = [
             [
-                'name' => 'Admin',
+                'name' => 'Arsil N',
                 'email' => 'admin@seeder.com',
                 'password' => Hash::make('admin'),
                 'level' => 'admin',
                 'email_verified_at' => now(),
             ],
             [
-                'name' => 'Manager',
+                'name' => 'Alfian Nurdiansyah',
                 'email' => 'manager@seeder.com',
                 'password' => Hash::make('manager'),
                 'level' => 'manager',
                 'email_verified_at' => now(),
             ],
             [
-                'name' => 'Kasir',
+                'name' => 'Alfian Yudohyono',
                 'email' => 'kasir@seeder.com',
                 'password' => Hash::make('kasir'),
                 'level' => 'kasir',

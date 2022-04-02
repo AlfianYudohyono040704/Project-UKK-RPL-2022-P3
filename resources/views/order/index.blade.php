@@ -1,28 +1,31 @@
 @extends('layouts.master')
 
 @section('title')
-    <title>CheckoutPage</title>
+    <title>Checkout Page</title>
 @endsection
 
 @section('content-header')
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
-                <div class="col-sm-6" style="font-family:'Dancing Script', cursive;">
+                <div class="col-sm-6">
                     <h1>Checkout</h1>
                 </div>
-                <!--<div class="col-sm-6">
+                {{-- <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
                     </ol>
-                </div>-->
+                </div> --}}
             </div>
         </div>
     </section>
 @endsection
 
 @section('content')
+<?php
+$uang_diterima = 0;
+?>
     <section class="content">
         <div class="container-fluid">
             @if ($msg = Session::get('gagal'))
@@ -38,7 +41,7 @@
                     <table class="table table-bordered">
                         <thead>
                             <tr>
-                                <th>#</th>
+                                <th>No</th>
                                 <th>Nama Barang</th>
                                 <th>Barcode</th>
                                 <th>Qty</th>
@@ -51,11 +54,7 @@
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $carts->product->name }}</td>
-                                    <td>
-                                        @php
-                                            echo DNS1D::getBarcodeSVG($carts->product->barcode, 'C128');
-                                        @endphp
-                                    </td>
+                                    <td>{{ $carts->product->barcode }}</td>
                                     <td>{{ $carts->quantity }}</td>
                                     <td>{{ number_format($carts->product->price, 2, ',', '.') }}</td>
                                     <td>{{ number_format($carts->subTotal, 2, ',', '.') }}</td>
@@ -80,6 +79,10 @@
                     <div class="form-group">
                         <label for="">Uang Cash</label>
                         @if ($cash = Session::get('cash'))
+                        <?php
+                            $uang_diterima = $cash;
+                        ?>
+                            <input type="hidden" id="uang_diterima_id" value="<?= $uang_diterima ?>">
                             <p>Rp. {{ number_format($cash, 2, ',', '.') }}</p>
                         @else
                             <p>Rp. 0</p>
@@ -100,7 +103,7 @@
                         </button>
                         &nbsp;
                         &nbsp;
-                        <form action="{{ route('do_transaction.store') }}" method="post">
+                        <form action="{{ route('do_transaction.store') }}" method="post" >
                             @csrf
                             @method('POST')
                             <input type="hidden" name="total" value="{{ $subTotal + $subTotal / 10 }}">
@@ -109,7 +112,7 @@
                             @else
                                 <input type="hidden" name="dibayar" value="0">
                             @endif
-                            <button type="submit" class="btn btn-sm btn-primary text-right">Transaksi</button>
+                            <input type="submit" class="btn btn-sm btn-primary text-right" value="Transaksi" onclick="return cekPembayaran()">
                         </form>
                     </div>
                 </div>
@@ -147,10 +150,22 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">Pembayaran via Cash/Manual</button>
+                        <button type="submit" class="btn btn-primary">Pembayaran via Cash</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
+
+    <script>
+        function cekPembayaran()
+        {
+            var uang_yangditerima = $("#uang_diterima_id").val();
+
+            if(uang_yangditerima === undefined){
+                alert("Maaf anda belum memasukkan uang")
+                return false;
+            }
+        }
+    </script>
 @endsection

@@ -25,8 +25,8 @@
                 <!-- small box -->
                 <div class="small-box bg-info">
                     <div class="inner">
-                        <h3>#</h3>
-                        <p>Orders Count</p>
+                        <h3>{{ $trxheader }}</h3>
+                        <p><b>Total Transaksi</b></p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-bag"></i>
@@ -40,8 +40,8 @@
                 <!-- small box -->
                 <div class="small-box bg-success">
                     <div class="inner">
-                        <h3>#</h3>
-                        <p><b>Product</b></p>
+                        <h3>{{ $product }}</h3>
+                        <p><b>Total Menu</b></p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-stats-bars"></i>
@@ -55,14 +55,13 @@
                 <!-- small box -->
                 <div class="small-box bg-danger">
                     <div class="inner">
-                        <h3>#</h3>
-
-                        <p>Income Today</p>
+                        <h3>{{ $activity }}</h3>
+                        <p><b>Total Aktivitas</b></p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-pie-graph"></i>
                     </div>
-                    <a href="#" class="small-box-footer">More info <i
+                    <a href="{{ route('activity.index') }}" class="small-box-footer">More info <i
                             class="fas fa-arrow-circle-right"></i></a>
                 </div> 
             </div>
@@ -70,15 +69,15 @@
             <div class="col-lg-3 col-6">
                 <!-- small box -->
                 <div class="small-box bg-warning">
-                    <div class="inner">
+                    <div class="inner" style="color: white">
                          <h3>{{ $user }}</h3> 
-                         <p><b>User</b></p>                    
+                         <p><b>Total User</b></p>                    
                     </div>
                     <div class="icon">
                         <i class="ion ion-person-add"></i>
                     </div>
-                    <a href="{{route('User.index')}}" class="small-box-footer">More info <i
-                            class="fas fa-arrow-circle-right"></i></a>
+                    <a href="{{ route('User.index') }}" class="small-box-footer"><span style="color: white">More info</span> 
+                        <i class="fas fa-arrow-circle-right" style="color: white"></i></a>
                 </div>
             </div>
             <!-- ./col -->
@@ -112,8 +111,8 @@
                 <!-- small box -->
                 <div class="small-box bg-info">
                     <div class="inner">
-                        <h3>#</h3>
-                        <p>Orders Count</p>
+                        <h3>{{ $trxheader }}</h3>
+                        <p><b>Total Transaksi</b></p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-bag"></i>
@@ -127,8 +126,8 @@
                 <!-- small box -->
                 <div class="small-box bg-success">
                     <div class="inner">
-                        <h3>#</h3>
-                        <p><b>Product</b></p>
+                        <h3>{{ $product }}</h3>
+                        <p><b>Total Menu</b></p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-stats-bars"></i>
@@ -137,6 +136,21 @@
                             class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-danger">
+                    <div class="inner">
+                        <h3>{{ $activity }}</h3>
+                        <p><b>Total Aktivitas</b></p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-pie-graph"></i>
+                    </div>
+                    <a href="{{ route('activity.index') }}" class="small-box-footer">More info <i
+                            class="fas fa-arrow-circle-right"></i></a>
+                </div> 
+            </div>
+            <!-- ./col -->
         </div>
     </div>
     <div class="container-fluid">
@@ -176,6 +190,49 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header" style="background-color: chocolate">
+                        <h3 class="card-title" style="color: white"><b>Daftar Menu</b></h3>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Name</th>
+                                    <th>Image</th>
+                                    <th>Description</th>
+                                    <th>Quantity</th>
+                                    <th>Price</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($products as $pr)
+                                    <tr>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $pr->name }}</td>
+                                        <td><img src="{{ Storage::url($pr->image) }}" width="100"></td>
+                                        <td>{{ $pr->description }}</td>
+                                        <td>{{ $pr->quantity }}</td>
+                                        <td>{{ number_format($pr->price, 2) }}</td>
+                                        @if ($pr->status == 1)
+                                            <td><a href="#" class="btn btn-success">Tersedia</a></td>
+                                        @else
+                                            <td><a href="#" class="btn btn-danger">Tidak tersedia</a></td>
+                                        @endif
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>

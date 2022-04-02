@@ -115,7 +115,7 @@
                         </a>
                     </li>
                     <li class="nav-item has-treeview">
-                        <a href="#" class="nav-link">
+                        <a href="{{ route('laporan.index') }}" class="nav-link">
                             <i class="nav-icon fas fa-book"></i>
                             <p style="color: white">Catatan Transaksi</p>
                         </a>
@@ -148,14 +148,14 @@
                             <p style="color: white">Keranjang</p>
                         </a>
                     </li>
-                    <li class="nav-item has-treeview">
+                    {{-- <li class="nav-item has-treeview">
                         <a href="{{ route('order.index') }}" class="nav-link">
                             <i class="nav-icon fas fa-cash-register"></i>
                             <p style="color: white">Pembayaran</p>
                         </a>
-                    </li>
+                    </li> --}}
                     <li class="nav-item has-treeview">
-                        <a href="#" class="nav-link">
+                        <a href="{{ route('laporan.index') }}" class="nav-link">
                             <i class="nav-icon fas fa-book"></i>
                             <p style="color: white">Catatan Transaksi</p>
                         </a>

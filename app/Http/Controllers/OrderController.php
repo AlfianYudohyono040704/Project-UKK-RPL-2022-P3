@@ -45,7 +45,6 @@ class OrderController extends Controller
         //
         $cash = $request->input('nominal');
         $total = $request->input('total');
-
         if ($cash < $total) {
             return redirect()->route('order.index')->with('gagal', 'Uang yang anda masukkan kurang');
         } else {

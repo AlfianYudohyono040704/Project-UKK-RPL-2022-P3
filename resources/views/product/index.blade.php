@@ -35,7 +35,7 @@
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
-                                        <th>#</th>
+                                        <th>No</th>
                                         <th>Name</th>
                                         <th>Image</th>
                                         <th>Description</th>
@@ -66,6 +66,7 @@
                                                 <td><a href="#" class="btn btn-danger">Tidak tersedia</a></td>
                                             @endif
                                             <td><a href="{{ route('product.edit', $pr->id) }}" class="btn btn-warning"><i class="fas fa-edit"></i></a><br><br>
+                
                                                 <a href="{{ route('product.destroy', $pr->id) }}" class="btn btn-danger"><i class="fas fa-trash"></i></a>
                                             </td>
                                         </tr>

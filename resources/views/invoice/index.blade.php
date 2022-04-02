@@ -50,7 +50,7 @@
                         <br>
                         <b>Nama Kasir : {{ Auth::user()->name }}</b><br>
                         <b>Order ID :</b> {{ $trxheader[0]->userid }}<br>
-                        <b>Payment Due :</b> {{ date('Y-m-d') }}<br>
+                        <b>Payment Due :</b> {{ date('Y-m-d / H:i:s') }}<br>
                     </div>
                     <!-- /.col -->
                 </div>
